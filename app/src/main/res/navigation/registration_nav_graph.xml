@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="az.sharif.chatapp.fragment.SignInFragment"
+        android:name="az.sharif.bippyteam.view.fragment.FragmentSignIn"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -16,16 +16,20 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="az.sharif.chatapp.fragment.SignUpFragment"
+        android:name="az.sharif.bippyteam.view.fragment.FragmentSignUp"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="az.sharif.chatapp.fragment.SplashFragment"
+        android:name="az.sharif.bippyteam.view.fragment.FragmentSplash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
-            android:id="@+id/splash_to_sign_in"
+            android:id="@+id/action_splashFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
     <fragment

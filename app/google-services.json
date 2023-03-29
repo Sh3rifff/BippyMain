@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "776753382378",
+    "project_id": "bippy-c2c43",
+    "storage_bucket": "bippy-c2c43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776753382378:android:e017214633892cfc3d6893",
+        "android_client_info": {
+          "package_name": "az.sharif.bippyteam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776753382378-mhdnnp3kqoavoloh5j1hom06lll3nl1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2Z57Gy_mdtSRKvDYZsbHH4dO_HDZ-CmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776753382378-2gv8mamj9kq546qkec12hj7341rgfj6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

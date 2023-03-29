@@ -8,7 +8,7 @@
     <string name="sign_out">Sign out</string>
     <string name="sign_up">Sign Up</string>
     <string name="save">Save</string>
-    <string name="create_new_accountant">Create new Accountant</string>
+    <string name="create_new_accountant">Create new Account</string>
     <string name="add_image">Add Image</string>
     <string name="personal_info">Personal Information\'s</string>
     <string name="name">Name</string>
@@ -59,5 +59,14 @@
     <string name="date">Date</string>
     <string name="desc">desc</string>
     <string name="xx_xxx_xx_xx">xx_xxx_xx_xx</string>
+    <string name="title_activity_auth">AuthActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>
