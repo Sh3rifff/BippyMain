@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import az.sharif.bippyteam.R
@@ -45,13 +46,17 @@ class FragmentSignIn:Fragment() {
                 password.requestFocus()
                 return@setOnClickListener
             }
+            binding.progressBar.isVisible=true
             firebaseAuth.signInWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
-
+                Toast.makeText(requireContext(), "Successfully Entered", Toast.LENGTH_SHORT).show()
+                binding.progressBar.isVisible=false
             }.addOnFailureListener{
                 Toast.makeText(requireContext(), "User couldn't Found", Toast.LENGTH_SHORT).show()
+                binding.progressBar.isVisible=false
             }
 
         }
+
 
         return binding.root
 
