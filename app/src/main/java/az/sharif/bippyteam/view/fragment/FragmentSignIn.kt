@@ -1,5 +1,6 @@
 package az.sharif.bippyteam.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.databinding.FragmentSignInBinding
+import az.sharif.bippyteam.view.activity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -50,6 +52,8 @@ class FragmentSignIn:Fragment() {
             firebaseAuth.signInWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
                 Toast.makeText(requireContext(), "Successfully Entered", Toast.LENGTH_SHORT).show()
                 binding.progressBar.isVisible=false
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                startActivity(intent)
             }.addOnFailureListener{
                 Toast.makeText(requireContext(), "User couldn't Found", Toast.LENGTH_SHORT).show()
                 binding.progressBar.isVisible=false
