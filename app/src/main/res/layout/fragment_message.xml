@@ -8,6 +8,7 @@
     android:background="@color/primary"
     tools:context=".fragment.MessageFragment">
 
+
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageProfile"
         android:layout_width="@dimen/_3sdp"

@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="true" />
 
+
     <View
         android:id="@+id/viewSupporter"
         android:layout_width="@dimen/_1sdp"
