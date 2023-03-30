@@ -63,6 +63,7 @@
                 android:layout_marginTop="5dp" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/countryError"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,6 +76,7 @@
                 />
 
             <ProgressBar
+                android:visibility="gone"
                 android:id="@+id/countryLoading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
