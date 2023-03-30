@@ -14,4 +14,9 @@
             android:name="image"
             app:argType="reference" />
     </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="az.sharif.bippyteam.view.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
 </navigation>
