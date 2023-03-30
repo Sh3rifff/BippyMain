@@ -24,6 +24,8 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
 
         holder.view.findViewById<TextView>(R.id.tvTitle).text=articleList[position].title
         holder.view.findViewById<TextView>(R.id.tvSource).text=articleList[position].source?.name
+        holder.view.findViewById<TextView>(R.id.tvDate).text=articleList[position].publishedAt
+
 
 
 
@@ -41,9 +43,9 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
         return articleList.size
     }
 
-    /*fun updateCountryList(newCountryList: List<Country>){
-        countryList.clear()
-        countryList.addAll(newCountryList)
+    fun updateArticleList(newCountryList: List<Article>){
+        articleList.clear()
+        articleList.addAll(newCountryList)
         notifyDataSetChanged()
-    }*/
+    }
 }

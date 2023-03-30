@@ -20,7 +20,7 @@ class CountryApiService {
         .build()
         .create(CountryAPI::class.java)
 
-    fun getData(): Call<Headline> {
+     fun getData(): Call<Headline> {
         return api.getArticles()
     }
 }
