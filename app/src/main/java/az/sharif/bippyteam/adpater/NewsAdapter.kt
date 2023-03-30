@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.model.Article
 
-class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class NewsAdapter(val articleList: ArrayList<Article>, var onClick:(Article)->Unit): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     class ArticleViewHolder(var view: View): RecyclerView.ViewHolder(view){
 
@@ -25,7 +25,9 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
         holder.view.findViewById<TextView>(R.id.tvTitle).text=articleList[position].title
         holder.view.findViewById<TextView>(R.id.tvSource).text=articleList[position].source?.name
         holder.view.findViewById<TextView>(R.id.tvDate).text=articleList[position].publishedAt
-
+        holder.itemView.setOnClickListener{
+            onClick(articleList[position])
+        }
 
 
 
@@ -42,6 +44,7 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
     override fun getItemCount(): Int {
         return articleList.size
     }
+
 
     fun updateArticleList(newCountryList: List<Article>){
         articleList.clear()

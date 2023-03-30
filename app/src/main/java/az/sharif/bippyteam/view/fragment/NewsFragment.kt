@@ -128,7 +128,9 @@ class NewsFragment:Fragment() {
                         articleModel=ArrayList(it.articles)
 
                         articleModel?.let {
-                            recyclerViewAdapter=NewsAdapter(it)
+                            recyclerViewAdapter=NewsAdapter(it){    ans->
+                                Toast.makeText(requireContext(), ans.title.toString(), Toast.LENGTH_SHORT).show()
+                            }
                             articles.value=it
                             recyclerView.adapter =recyclerViewAdapter
                         }
