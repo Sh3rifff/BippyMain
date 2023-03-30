@@ -1,4 +1,4 @@
-package az.sharif.bippyteam.view
+package az.sharif.bippyteam.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

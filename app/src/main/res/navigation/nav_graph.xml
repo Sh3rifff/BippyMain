@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/discoveryFragment">
+    app:startDestination="@id/newsFragment">
 
     <fragment
         android:id="@+id/discoveryFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
-        android:name="az.sharif.bippyteam.view.NewsFragment"
+        android:name="az.sharif.bippyteam.view.fragment.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
 </navigation>
