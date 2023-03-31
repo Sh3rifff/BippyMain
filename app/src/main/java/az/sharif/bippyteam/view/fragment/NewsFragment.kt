@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.adpater.NewsAdapter
 import az.sharif.bippyteam.model.Article
@@ -27,11 +28,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsFragment:Fragment() {
-    private val BASE_URL="https://newsapi.org/v2/"
-    private lateinit var articleModel:ArrayList<Article>
-    private lateinit var recyclerViewAdapter:NewsAdapter
-    lateinit var countryApiService:CountryApiService
+
     lateinit var recyclerView: RecyclerView
+    lateinit var refreshLayout:SwipeRefreshLayout
 
     private lateinit var viewModel:NewsViewModel
     private val newsAdapter=NewsAdapter(arrayListOf())
@@ -52,6 +51,7 @@ class NewsFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView=view.findViewById(R.id.recyclerView)
+        refreshLayout=view.findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
 
 
         viewModel=ViewModelProvider(this)[NewsViewModel::class.java]
@@ -61,7 +61,13 @@ class NewsFragment:Fragment() {
         recyclerView.adapter=newsAdapter
 
 
-        //loadData()
+        refreshLayout.setOnRefreshListener {
+            recyclerView.visibility=View.GONE
+            view.findViewById<TextView>(R.id.articleError).visibility=View.GONE
+            //view.findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
+            viewModel.refreshData()
+            refreshLayout.isRefreshing=false
+        }
 
         observeLiveData()
 
@@ -72,7 +78,7 @@ class NewsFragment:Fragment() {
         viewModel.articles.observe(viewLifecycleOwner, Observer { articles ->
             articles?.let {
                 recyclerView.visibility=View.VISIBLE
-                recyclerViewAdapter.updateArticleList(articles)
+                newsAdapter.updateArticleList(articles)
             }
         })
 
@@ -106,44 +112,6 @@ class NewsFragment:Fragment() {
     }
 
 
-    /*fun loadData(){
-
-        val retrofit=
-            Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
-
-        val service= retrofit.create(CountryAPI::class.java)
-        val call=service.getArticles()
-
-        call.enqueue(object : Callback<Headline> {
-            override fun onFailure(call: Call<Headline>, t: Throwable) {
-
-                Toast.makeText(context,"${t.localizedMessage}",Toast.LENGTH_LONG).show()
-                t.localizedMessage
-            }
-
-            override fun onResponse(
-                call: Call<Headline>,
-                response: Response<Headline>
-            ) {
-                if (response.isSuccessful){
-
-                    response.body()?.let {
-*//*
-                        Toast.makeText(context,"Elaa",Toast.LENGTH_LONG).show()
-*//*
-                        articleModel=ArrayList(it.articles)
-
-                        articleModel?.let {
-                            recyclerViewAdapter=NewsAdapter(it)
-                            view?.findViewById<RecyclerView>(R.id.recyclerView)?.adapter =recyclerViewAdapter
-                        }
-
-                    }
-                }else     Toast.makeText(context,"Badd",Toast.LENGTH_LONG).show()
-
-            }
-        })
-    }*/
 
 
 }

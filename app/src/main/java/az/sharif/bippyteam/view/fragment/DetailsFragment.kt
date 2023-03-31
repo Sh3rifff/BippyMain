@@ -9,6 +9,8 @@ import az.sharif.bippyteam.R
 
 class DetailsFragment:Fragment() {
 
+    private var articleUUid=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -24,7 +26,10 @@ class DetailsFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        arguments?.let {
+            articleUUid=DetailsFragmentArgs.fromBundle(it).uuId
 
+        }
 
     }
 

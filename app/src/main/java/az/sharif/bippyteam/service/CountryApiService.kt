@@ -2,6 +2,7 @@ package az.sharif.bippyteam.service
 
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -20,7 +21,7 @@ class CountryApiService {
         .build()
         .create(CountryAPI::class.java)
 
-    fun getData(): Call<Headline> {
+    fun getData(): Single<Headline> {
         return api.getArticles()
     }
 }

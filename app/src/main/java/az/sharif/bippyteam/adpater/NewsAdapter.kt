@@ -3,10 +3,15 @@ package az.sharif.bippyteam.adpater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.model.Article
+import az.sharif.bippyteam.util.downloadFromUrl
+import az.sharif.bippyteam.util.placeHolderProgressBar
+import az.sharif.bippyteam.view.fragment.NewsFragmentDirections
 
 class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
@@ -27,14 +32,14 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
 
 
 
-        /*holder.view.setOnClickListener{
-            val action=FeedFragmentDirections.actionFeedFragmentToCountryFragment(countryList[position].uuid)
+        holder.view.setOnClickListener{
+            val action=NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }
 
-        holder.view.imageView.downloadFromUrl(countryList[position].imageUrl,
+        holder.view.findViewById<ImageView>(R.id.image).downloadFromUrl(articleList[position].urlToImage,
             placeHolderProgressBar(holder.view.context)
-        )*/
+        )
     }
 
     override fun getItemCount(): Int {
