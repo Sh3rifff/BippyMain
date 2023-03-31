@@ -12,6 +12,6 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
     val articleLoading= MutableLiveData<Boolean>()
 
     fun refreshData(){
-        Toast.makeText(getApplication(),"Deneme",Toast.LENGTH_LONG).show()
+        Toast.makeText(getApplication(),"DEneme",Toast.LENGTH_LONG).show()
     }
 }

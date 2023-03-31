@@ -64,7 +64,7 @@
 
             <TextView
                 android:visibility="gone"
-                android:id="@+id/countryError"
+                android:id="@+id/articleError"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Error! Try again"
@@ -77,7 +77,7 @@
 
             <ProgressBar
                 android:visibility="gone"
-                android:id="@+id/countryLoading"
+                android:id="@+id/articleLoading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

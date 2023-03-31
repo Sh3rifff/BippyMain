@@ -41,7 +41,7 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
         return articleList.size
     }
 
-    fun updateCountryList(newArticleList: List<Article>){
+    fun updateArticleList(newArticleList: List<Article>){
         articleList.clear()
         articleList.addAll(newArticleList)
         notifyDataSetChanged()
