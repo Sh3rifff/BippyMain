@@ -18,5 +18,18 @@
         android:id="@+id/newsFragment"
         android:name="az.sharif.bippyteam.view.fragment.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_newsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="az.sharif.bippyteam.view.fragment.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="uuId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

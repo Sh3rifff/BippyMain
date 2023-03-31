@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingTop="@dimen/_12sdp"
-    tools:context=".fragment.NewsFragment">
+    tools:context=".view.fragment.NewsFragment">
 
     <GridLayout
 
