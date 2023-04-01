@@ -31,6 +31,9 @@ class DetailsFragment:Fragment() {
 
         }
 
+
+
+
     }
 
 
