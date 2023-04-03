@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
 import az.sharif.bippyteam.service.CountryApiService
-import az.sharif.bippyteam.service.NewsDatabase
 import az.sharif.bippyteam.util.CustomSharedPreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -28,13 +27,14 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
     val articleLoading= MutableLiveData<Boolean>()
 
     fun refreshData(){
-        val updateTime=customPreferences.getTime()
+        /*val updateTime=customPreferences.getTime()
         if(updateTime!=null && updateTime!=0L && System.nanoTime()-updateTime<refreshTime){
             getDataFromSQLite()
         }
         else{
             getDataFromApi()
-        }
+        }*/
+        getDataFromApi()
 
     }
 
@@ -42,15 +42,15 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
         getDataFromApi()
     }
 
-    private fun getDataFromSQLite(){
+    /*private fun getDataFromSQLite(){
         launch {
             articleLoading.value=true
             val news=NewsDatabase(getApplication()).newsDao().getAllNews()
-            showNews(news)
+            showNews(news.articles)
             Toast.makeText(getApplication(),"Countries From SQLite",Toast.LENGTH_LONG).show()
 
         }
-    }
+    }*/
 
 
     private fun getDataFromApi(){
@@ -63,12 +63,12 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<Headline>(){
                     override fun onSuccess(t: Headline) {
-                        /*articles.value=t.articles
+                        articles.value=t.articles
                         articleError.value=false
-                        articleLoading.value=false*/
+                        articleLoading.value=false
 
-                        storeInSQLite(t.articles)
-                        Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()
+                        /*storeInSQLite(t.articles)
+                        Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()*/
                     }
 
                     override fun onError(e: Throwable) {
@@ -84,14 +84,14 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
     }
 
 
-    private fun showNews(newsList:List<Article>){
+    /*private fun showNews(newsList:List<Article>){
         articles.value=newsList
         articleError.value=false
         articleLoading.value=false
-    }
+    }*/
 
 
-    private fun storeInSQLite(list: List<Article>){
+    /*private fun storeInSQLite(list: List<Article>){
 
         launch {
             val dao=NewsDatabase(getApplication()).newsDao()
@@ -107,7 +107,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
 
         customPreferences.saveTime(System.nanoTime())
 
-    }
+    }*/
 
     override fun onCleared() {
         super.onCleared()

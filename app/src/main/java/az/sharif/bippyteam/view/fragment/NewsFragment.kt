@@ -65,7 +65,7 @@ class NewsFragment:Fragment() {
             recyclerView.visibility=View.GONE
             view.findViewById<TextView>(R.id.articleError).visibility=View.GONE
             //view.findViewById<ProgressBar>(R.id.progressBar).visibility=View.VISIBLE
-            viewModel.refreshData()
+            viewModel.refreshFromApi()
             refreshLayout.isRefreshing=false
         }
 

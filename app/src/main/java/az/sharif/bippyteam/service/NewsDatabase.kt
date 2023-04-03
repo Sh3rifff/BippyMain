@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import az.sharif.bippyteam.model.Article
 
-
+/*
 @Database(entities = arrayOf(Article::class),version = 1)
 abstract class NewsDatabase : RoomDatabase(){
     abstract fun newsDao(): NewsDao
@@ -28,4 +28,4 @@ abstract class NewsDatabase : RoomDatabase(){
             context.applicationContext,NewsDatabase::class.java,"newsDatabase"
         ).build()
     }
-}
+}*/
