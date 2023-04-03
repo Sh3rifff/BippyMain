@@ -7,6 +7,7 @@
     android:background="@color/white"
     tools:context=".fragment.helper.ServicesItemFragment">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"

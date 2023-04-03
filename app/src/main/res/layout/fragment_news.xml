@@ -6,9 +6,10 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingTop="@dimen/_12sdp"
-    tools:context=".fragment.NewsFragment">
+    tools:context=".view.fragment.NewsFragment">
 
     <GridLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -51,15 +52,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/articleError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Error! Try again"
+                android:layout_centerInParent="true"
+                android:textSize="19sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+
+                />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/articleLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+
+                />
+        </RelativeLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-<!--   https://newsapi.org/v2/   -->
-<!--   top-headlines?country=us&apiKey=cb783fc0425c4c71bf69e4a0bb4631c7   -->
 
 </LinearLayout>

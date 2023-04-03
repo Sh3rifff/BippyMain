@@ -6,6 +6,7 @@
     android:background="@drawable/background_category_item"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <ImageView
         android:id="@+id/motor_image"
         android:layout_width="40dp"

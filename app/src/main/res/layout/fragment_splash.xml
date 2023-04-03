@@ -8,6 +8,7 @@
     android:padding="20dp"
     tools:context=".view.fragment.FragmentSplash">
 
+
     <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="150dp"
