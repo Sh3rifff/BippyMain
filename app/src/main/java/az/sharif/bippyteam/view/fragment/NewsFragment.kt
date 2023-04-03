@@ -24,9 +24,6 @@ class NewsFragment:Fragment() {
     private lateinit var viewModel:NewsViewModel
     private val newsAdapter=NewsAdapter(arrayListOf())
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
