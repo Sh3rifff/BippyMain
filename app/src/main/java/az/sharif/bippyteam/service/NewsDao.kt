@@ -10,6 +10,7 @@ import az.sharif.bippyteam.model.Headline
 
 @Dao
 interface NewsDao {
+
     @Insert
     suspend fun insertAll(vararg articles: Article): List<Long>
 

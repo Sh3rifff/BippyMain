@@ -5,7 +5,10 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
-import az.sharif.bippyteam.service.CountryApiService
+
+import az.sharif.bippyteam.service.NewsApiService
+import az.sharif.bippyteam.service.NewsDatabase
+
 import az.sharif.bippyteam.util.CustomSharedPreferences
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -15,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(application: Application):  BaseViewModel(application){
 
-    private val articleApiService=CountryApiService()
+    private val articleApiService=NewsApiService()
     private val disposable= CompositeDisposable()
     private var customPreferences= CustomSharedPreferences(getApplication())
     private var refreshTime=10*60*1000*1000*1000L
