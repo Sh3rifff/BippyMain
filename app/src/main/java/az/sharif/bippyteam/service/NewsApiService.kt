@@ -1,14 +1,12 @@
 package az.sharif.bippyteam.service
 
-import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class CountryApiService {
+class NewsApiService {
 
     /*<!--   https://newsapi.org/v2/   -->
     <!--   top-headlines?country=us&apiKey=cb783fc0425c4c71bf69e4a0bb4631c7   -->*/
@@ -19,7 +17,7 @@ class CountryApiService {
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
-        .create(CountryAPI::class.java)
+        .create(NewsApi::class.java)
 
     fun getData(): Single<Headline> {
         return api.getArticles()
