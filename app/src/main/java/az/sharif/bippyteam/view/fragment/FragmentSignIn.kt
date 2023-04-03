@@ -38,6 +38,8 @@ class FragmentSignIn:Fragment() {
         var password  = binding.inputPassword
 
         binding.buttonSignIn.setOnClickListener{
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
             if(email.text.isEmpty()){
                 email.error="Pls enter email!"
                 email.requestFocus()
