@@ -17,7 +17,7 @@ interface NewsDao {
     @Query("SELECT * FROM article")
     suspend fun getAllNews():Headline
 
-    @Query("SELECT * FROM article WHERE uuid= :countryId")
+    @Query("SELECT * FROM article WHERE uuid= :newsId")
     suspend fun getNews(newsId: Int): Article
 
     @Query("DELETE FROM article")
