@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Article(
     @ColumnInfo(name="source")
-    val source: NewsSource?,
+    val source: NewsSource,
     @ColumnInfo(name="author")
     val author: String?=null,
     @ColumnInfo(name="title")

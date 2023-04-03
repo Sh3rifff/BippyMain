@@ -56,7 +56,12 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
 
 
         holder.view.setOnClickListener{
-            val action=NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
+            val action=NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid,
+                articleList[position].source?.name.toString(),
+                articleList[position].publishedAt.toString(),
+                articleList[position].title.toString(),
+                articleList[position].urlToImage.toString()
+            )
             Navigation.findNavController(it).navigate(action)
         }
 

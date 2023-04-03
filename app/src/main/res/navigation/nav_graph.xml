@@ -31,5 +31,17 @@
         <argument
             android:name="uuId"
             app:argType="integer" />
+        <argument
+            android:name="sourceName"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="urlToImage"
+            app:argType="string" />
     </fragment>
 </navigation>

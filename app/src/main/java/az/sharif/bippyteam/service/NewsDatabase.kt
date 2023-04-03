@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Converter
 
-
+/*
 @Database(entities = arrayOf(Article::class),version = 1)
 @TypeConverters(Converter::class)
 abstract class NewsDatabase : RoomDatabase(){
@@ -31,4 +31,4 @@ abstract class NewsDatabase : RoomDatabase(){
             context.applicationContext,NewsDatabase::class.java,"newsDatabase"
         ).build()
     }
-}
+}*/

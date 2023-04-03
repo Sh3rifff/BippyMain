@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import az.sharif.bippyteam.model.Article
+import az.sharif.bippyteam.model.Headline
 
+/*
 
 @Dao
 interface NewsDao {
@@ -14,7 +16,7 @@ interface NewsDao {
 
 
     @Query("SELECT * FROM article")
-    suspend fun getAllNews():List<Article>
+    suspend fun getAllNews():Headline
 
     @Query("SELECT * FROM article WHERE uuid= :newsId")
     suspend fun getNews(newsId: Int): Article
@@ -22,3 +24,4 @@ interface NewsDao {
     @Query("DELETE FROM article")
     suspend fun deleteAllNews()
 }
+*/
