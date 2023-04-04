@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f1f1f1"
-    android:padding="15dp"
-    tools:context=".fragment.DiscoveryFragment"
-    >
+    android:padding="15dp">
 
 
     <ImageView
@@ -59,11 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="@string/find_best_services_for_you"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/currentLocation" />
+        app:layout_constraintTop_toBottomOf="@id/currentLocation"
+        tools:text="@string/find_best_services_for_you" />
 
     <LinearLayout
         android:id="@+id/search_panel"
