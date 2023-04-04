@@ -47,7 +47,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
             articleLoading.value=true
             val news=NewsDatabase(getApplication()).newsDao().getAllNews()
             showNews(news)
-            Toast.makeText(getApplication(),"Countries From SQLite",Toast.LENGTH_LONG).show()
+            //Toast.makeText(getApplication(),"Countries From SQLite",Toast.LENGTH_LONG).show()
 
         }
     }
@@ -68,7 +68,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
                         articleLoading.value=false*/
 
                         storeInSQLite(t.articles)
-                        Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()
+                        //Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {

@@ -50,6 +50,7 @@ class DetailsFragment:Fragment() {
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
