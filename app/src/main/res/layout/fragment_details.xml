@@ -62,7 +62,7 @@
                             android:padding="6dp">
 
                             <TextView
-                                android:id="@+id/tvSource"
+                                android:id="@+id/tvSourceDetails"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/source"
@@ -86,23 +86,23 @@
                     </FrameLayout>
 
                     <TextView
-                        android:id="@+id/tvTitle"
+                        android:id="@+id/tvTitleDetails"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="@string/title"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvDesc"
+                        android:id="@+id/tvDescDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-5dp"
                         android:padding="10dp"
                         android:text="@string/desc"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="italic"
                         tools:ignore="RtlHardcoded" />
