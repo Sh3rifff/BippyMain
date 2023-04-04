@@ -47,6 +47,9 @@ class NewsFragment:Fragment() {
         recyclerView.adapter=newsAdapter
 
 
+
+
+
         refreshLayout.setOnRefreshListener {
             recyclerView.visibility=View.GONE
             view.findViewById<TextView>(R.id.articleError).visibility=View.GONE
@@ -58,6 +61,8 @@ class NewsFragment:Fragment() {
         observeLiveData()
 
     }
+
+
 
 
     private fun observeLiveData(){
