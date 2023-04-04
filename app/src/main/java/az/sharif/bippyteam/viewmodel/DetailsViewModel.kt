@@ -8,13 +8,13 @@ import az.sharif.bippyteam.service.NewsDatabase
 import kotlinx.coroutines.launch
 
 open class DetailsViewModel(application: Application):BaseViewModel(application) {
-    val countryLiveData= MutableLiveData<Article>()
+    val newsLiveData= MutableLiveData<Article>()
 
     fun getDataFromRoom(uuid: Int){
         launch {
             val dao= NewsDatabase(getApplication()).newsDao()
-            val country= dao.getNews(uuid)
-            countryLiveData.value=country
+            val news= dao.getNews(uuid)
+            newsLiveData.value=news
 
         }
     }
