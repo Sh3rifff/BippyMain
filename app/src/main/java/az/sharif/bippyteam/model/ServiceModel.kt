@@ -1,4 +1,4 @@
-package az.sharif.bippyteam
+package az.sharif.bippyteam.model
 
 import java.io.Serializable
 
