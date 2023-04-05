@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import az.sharif.bippyteam.R
+import az.sharif.bippyteam.adpater.CategoryAdapter
 import az.sharif.bippyteam.adpater.ServicesAdapter
 import az.sharif.bippyteam.databinding.FragmentDiscoveryBinding
 import az.sharif.bippyteam.viewmodel.DiscoveryViewModel
@@ -13,6 +14,7 @@ import az.sharif.bippyteam.viewmodel.DiscoveryViewModel
 class DiscoveryFragment : Fragment(R.layout.fragment_discovery) {
 
     private val servicesAdapter = ServicesAdapter(arrayListOf())
+    private val categoryAdapter = CategoryAdapter(arrayListOf())
     private lateinit var binding: FragmentDiscoveryBinding
     private val viewModel: DiscoveryViewModel by viewModels()
 
@@ -20,22 +22,36 @@ class DiscoveryFragment : Fragment(R.layout.fragment_discovery) {
         binding = FragmentDiscoveryBinding.bind(view)
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.refreshData()
-
+        viewModel.refreshServiceData()
         binding.serviceRecycler.layoutManager = LinearLayoutManager(context)
         binding.serviceRecycler.adapter = servicesAdapter
+        observeServiceData()
 
-        observeData()
+
+        viewModel.refreshCategoryData()
+        binding.categoryRecycler.layoutManager = LinearLayoutManager(context)
+        binding.categoryRecycler.adapter = categoryAdapter
+        observeCategoryData()
     }
 
-    private fun observeData() {
+    private fun observeServiceData() {
         viewModel.services.observe(viewLifecycleOwner) { services ->
 
             services?.let {
                 binding.serviceRecycler.layoutManager = LinearLayoutManager(context)
                 servicesAdapter.submitList(services)
             }
+        }
+    }
 
+    private fun observeCategoryData() {
+        viewModel.category.observe(viewLifecycleOwner) { category ->
+
+            category?.let {
+                binding.categoryRecycler.layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                categoryAdapter.submitList(category)
+            }
         }
     }
 }

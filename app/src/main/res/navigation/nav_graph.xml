@@ -13,6 +13,12 @@
         <argument
             android:name="image"
             app:argType="reference" />
+        <action
+            android:id="@+id/discovery_to_service"
+            app:destination="@id/servicePageFragment" />
+        <action
+            android:id="@+id/discovery_to_category"
+            app:destination="@id/categoryPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -32,4 +38,17 @@
             android:name="uuId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/servicePageFragment"
+        android:name="az.sharif.bippyteam.view.fragment.ServicePageFragment"
+        android:label="ServicePageFragment" >
+        <argument
+            android:name="service"
+            app:argType="az.sharif.bippyteam.model.ServiceModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryPageFragment"
+        android:name="az.sharif.bippyteam.view.fragment.CategoryPageFragment"
+        android:label="fragment_category_page"
+        tools:layout="@layout/fragment_category_page" />
 </navigation>

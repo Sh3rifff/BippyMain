@@ -1,9 +1,7 @@
 package az.sharif.bippyteam.view.fragment
 
-import android.app.Application
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,36 +9,27 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import az.sharif.bippyteam.R
-import az.sharif.bippyteam.model.Article
-import az.sharif.bippyteam.service.NewsDatabase
 import az.sharif.bippyteam.util.downloadFromUrl
 import az.sharif.bippyteam.util.placeHolderProgressBar
 import az.sharif.bippyteam.viewmodel.DetailsViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class DetailsFragment:Fragment() {
+class DetailsFragment : Fragment() {
 
     private lateinit var viewModel: DetailsViewModel
-    private var newsUuid=0
+    private var newsUuid = 0
     private lateinit var sourceName: TextView
-    private lateinit var detailsTitle:TextView
-    private lateinit var desc:TextView
+    private lateinit var detailsTitle: TextView
+    private lateinit var desc: TextView
     private lateinit var image: ImageView
     private lateinit var webView: WebView
-    private lateinit var date:TextView
-
-
+    private lateinit var date: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,33 +43,34 @@ class DetailsFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sourceName=view.findViewById(R.id.tvSourceDetails)
-        detailsTitle=view.findViewById(R.id.tvTitleDetails)
-        desc=view.findViewById(R.id.tvDescDetails)
-        image=view.findViewById(R.id.imageView)
-        webView=view.findViewById(R.id.webView)
-        date=view.findViewById(R.id.tvDate)
+        sourceName = view.findViewById(R.id.tvSourceDetails)
+        detailsTitle = view.findViewById(R.id.tvTitleDetails)
+        desc = view.findViewById(R.id.tvDescDetails)
+        image = view.findViewById(R.id.imageView)
+        webView = view.findViewById(R.id.webView)
+        date = view.findViewById(R.id.tvDate)
 
         arguments?.let {
-            newsUuid=DetailsFragmentArgs.fromBundle(it).uuId
+            newsUuid = DetailsFragmentArgs.fromBundle(it).uuId
 
         }
-        viewModel= ViewModelProvider(this)[DetailsViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         viewModel.getDataFromRoom(newsUuid)
         observeLiveData()
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun observeLiveData(){
-        viewModel.newsLiveData.observe(viewLifecycleOwner, Observer { news->
+    private fun observeLiveData() {
+        viewModel.newsLiveData.observe(viewLifecycleOwner, Observer { news ->
             news?.let {
-                detailsTitle.text=news.title
-                sourceName.text=news.source?.name
-                desc.text=news.description
+                detailsTitle.text = news.title
+                sourceName.text = news.source?.name
+                desc.text = news.description
 
-                val formatter= DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-                val localDate= LocalDate.parse(news.publishedAt,formatter)
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                val localDate = LocalDate.parse(news.publishedAt, formatter)
 
-                date.text=localDate.toString()
+                date.text = localDate.toString()
 
 
                 context?.let {
