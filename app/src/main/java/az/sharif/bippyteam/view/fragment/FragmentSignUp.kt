@@ -14,6 +14,7 @@ import az.sharif.bippyteam.view.activity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.regex.Pattern
 
 
 class FragmentSignUp: Fragment() {
@@ -36,10 +37,10 @@ class FragmentSignUp: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSignUpBinding.inflate(layoutInflater)
-        var name = binding.inputName
-        var email = binding.inputEmail
-        var password = binding.inputPassword
-        var confirmPassword = binding.inputConfirmPassword
+        val name = binding.inputName
+        val email = binding.inputEmail
+        val password = binding.inputPassword
+        val confirmPassword = binding.inputConfirmPassword
 
         /////////// AUTHENTICATION ///////////
 
@@ -47,6 +48,11 @@ class FragmentSignUp: Fragment() {
 
             if(name.text.isEmpty()){
                 name.error = "Name cannot be empty!"
+                name.requestFocus()
+                return@setOnClickListener
+            }
+            if(!nameValidate(name.text.toString())){
+                name.error = "Masin nomresi Yaz QAQA!: 00AA000"
                 name.requestFocus()
                 return@setOnClickListener
             }
@@ -78,11 +84,18 @@ class FragmentSignUp: Fragment() {
 
 
 
+
+
         }
         binding.textSignIn.setOnClickListener{
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
 
         return binding.root
+    }
+    private fun nameValidate(name:String):Boolean{
+        val p = Pattern.compile("\\d{2}[A-Z][A-Z]\\d\\d\\d")
+        val m = p.matcher(name)
+        return m.matches()
     }
 }

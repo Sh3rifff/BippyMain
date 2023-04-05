@@ -34,8 +34,8 @@ class FragmentSignIn:Fragment() {
         binding.createAccount.setOnClickListener{
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
-        var email = binding.inputEmail
-        var password  = binding.inputPassword
+        val email = binding.inputEmail
+        val password  = binding.inputPassword
 
         binding.buttonSignIn.setOnClickListener{
             //byPass
@@ -56,8 +56,8 @@ class FragmentSignIn:Fragment() {
             firebaseAuth.signInWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
                 Toast.makeText(requireContext(), "Successfully Entered", Toast.LENGTH_SHORT).show()
                 binding.progressBar.isVisible=false
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
+
+                startActivity(Intent(requireActivity(), MainActivity::class.java))
             }.addOnFailureListener{
                 Toast.makeText(requireContext(), "User couldn't Found", Toast.LENGTH_SHORT).show()
                 binding.progressBar.isVisible=false
