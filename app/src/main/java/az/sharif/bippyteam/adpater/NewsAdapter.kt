@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class NewsAdapter(var articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     class ArticleViewHolder(var view: View): RecyclerView.ViewHolder(view){
 
@@ -72,6 +72,12 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
     fun updateArticleList(newArticleList: List<Article>){
         articleList.clear()
         articleList.addAll(newArticleList)
+        notifyDataSetChanged()
+    }
+    fun setFilteredList(mList:ArrayList<Article>){
+        //this.articleList=mList
+        articleList.clear()
+        articleList.addAll(mList)
         notifyDataSetChanged()
     }
 }
