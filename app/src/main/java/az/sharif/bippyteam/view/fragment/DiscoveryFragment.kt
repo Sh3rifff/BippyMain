@@ -1,6 +1,5 @@
 package az.sharif.bippyteam.view.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -29,7 +28,6 @@ class DiscoveryFragment : Fragment(R.layout.fragment_discovery) {
         observeData()
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun observeData() {
         viewModel.services.observe(viewLifecycleOwner) { services ->
 
