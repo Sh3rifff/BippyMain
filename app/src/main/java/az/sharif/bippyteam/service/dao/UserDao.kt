@@ -6,6 +6,6 @@ import az.sharif.bippyteam.model.User
 
 @Dao
 interface UserDao {
-    @Query("Select * from users where name =: email and password =: pass")
+    @Query("Select * from users where name = :email and password = :pass")
     fun findUserByMail(email:String,pass:String):User?
 }
