@@ -1,6 +1,7 @@
 package az.sharif.bippyteam.service
 
 import az.sharif.bippyteam.model.Headline
+import az.sharif.bippyteam.service.dao.NewsApi
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

@@ -1,4 +1,4 @@
-package az.sharif.bippyteam.service
+package az.sharif.bippyteam.service.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Converter
+import az.sharif.bippyteam.service.dao.NewsDao
 
 
 @Database(entities = arrayOf(Article::class),version = 1)

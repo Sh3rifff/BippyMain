@@ -1,4 +1,4 @@
-package az.sharif.bippyteam.service
+package az.sharif.bippyteam.service.dao
 
 import az.sharif.bippyteam.model.Headline
 import io.reactivex.Single
