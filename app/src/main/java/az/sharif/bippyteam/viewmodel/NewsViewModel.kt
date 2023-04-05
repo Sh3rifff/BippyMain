@@ -1,13 +1,13 @@
 package az.sharif.bippyteam.viewmodel
 
 import android.app.Application
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
-import az.sharif.bippyteam.service.NewsApiService
+import az.sharif.bippyteam.service.NewsApi
 import az.sharif.bippyteam.service.NewsDatabase
 import az.sharif.bippyteam.util.CustomSharedPreferences
+import az.sharif.bippyteam.util.NewsRetrofitInstance
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(application: Application):  BaseViewModel(application){
 
-    private val articleApiService=NewsApiService()
+    private val articleApiService:NewsApi = NewsRetrofitInstance.NEWSINSTANCE.create(NewsApi::class.java)
     private val disposable= CompositeDisposable()
     private var customPreferences= CustomSharedPreferences(getApplication())
     private var refreshTime=10*60*1000*1000*1000L
@@ -58,7 +58,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
         articleLoading.value=true
 
         disposable.add(
-            articleApiService.getData()
+            articleApiService.getArticles()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<Headline>(){
