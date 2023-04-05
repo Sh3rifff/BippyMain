@@ -5,13 +5,11 @@ import androidx.room.Insert
 import androidx.room.Query
 import az.sharif.bippyteam.model.Article
 
-
 @Dao
 interface NewsDao {
 
     @Insert
     suspend fun insertAll(vararg articles: Article): List<Long>
-
 
     @Query("SELECT * FROM article")
     suspend fun getAllNews():List<Article>
