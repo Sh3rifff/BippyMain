@@ -36,14 +36,8 @@ class NewsAdapter(var articleList: ArrayList<Article>): RecyclerView.Adapter<New
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
 
-
-
-
-
         holder.view.findViewById<TextView>(R.id.tvTitle).text=articleList[position].title
         holder.view.findViewById<TextView>(R.id.tvSource).text=articleList[position].source?.name
-
-
 
         val date=articleList[position].publishedAt
         val formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -51,9 +45,6 @@ class NewsAdapter(var articleList: ArrayList<Article>): RecyclerView.Adapter<New
         //Toast.makeText(holder.view.context,localDate.toString(),Toast.LENGTH_LONG).show()
 
         holder.view.findViewById<TextView>(R.id.tvDate).text=localDate.toString()
-
-
-
 
         holder.view.setOnClickListener{
             val action=NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
