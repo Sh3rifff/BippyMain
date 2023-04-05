@@ -13,4 +13,5 @@ object NewsRetrofitInstance {
            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
            .build()
     }
+
 }

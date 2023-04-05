@@ -1,4 +1,4 @@
-package az.sharif.bippyteam.service
+package az.sharif.bippyteam.service.database
 
 import android.content.Context
 import androidx.room.Database
@@ -22,14 +22,14 @@ abstract class NewsDatabase : RoomDatabase(){
 
         private val lock = Any()
 
-        operator fun invoke(context: Context)= instance?: synchronized(lock){
-            instance?: makeDatabase(context).also{
-                instance=it
+        operator fun invoke(context: Context)= instance ?: synchronized(lock){
+            instance ?: makeDatabase(context).also{
+                instance =it
             }
         }
 
         private fun makeDatabase(context: Context)= Room.databaseBuilder(
-            context.applicationContext,NewsDatabase::class.java,"newsDatabase"
+            context.applicationContext, NewsDatabase::class.java,"newsDatabase"
         ).build()
     }
 }

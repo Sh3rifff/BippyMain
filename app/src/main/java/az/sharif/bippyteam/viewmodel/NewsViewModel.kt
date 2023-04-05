@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
-import az.sharif.bippyteam.service.NewsApi
-import az.sharif.bippyteam.service.NewsDatabase
+import az.sharif.bippyteam.service.api.NewsApi
+import az.sharif.bippyteam.service.database.NewsDatabase
 import az.sharif.bippyteam.util.CustomSharedPreferences
 import az.sharif.bippyteam.util.NewsRetrofitInstance
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(application: Application):  BaseViewModel(application){
 
-    private val articleApiService:NewsApi = NewsRetrofitInstance.NEWSINSTANCE.create(NewsApi::class.java)
+    private val articleApiService: NewsApi = NewsRetrofitInstance.NEWSINSTANCE.create(NewsApi::class.java)
     private val disposable= CompositeDisposable()
     private var customPreferences= CustomSharedPreferences(getApplication())
     private var refreshTime=10*60*1000*1000*1000L
@@ -45,7 +45,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
     private fun getDataFromSQLite(){
         launch {
             articleLoading.value=true
-            val news=NewsDatabase(getApplication()).newsDao().getAllNews()
+            val news= NewsDatabase(getApplication()).newsDao().getAllNews()
             showNews(news)
             //Toast.makeText(getApplication(),"Countries From SQLite",Toast.LENGTH_LONG).show()
 
@@ -54,7 +54,6 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
 
 
     private fun getDataFromApi(){
-
         articleLoading.value=true
 
         disposable.add(
@@ -94,7 +93,7 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
     private fun storeInSQLite(list: List<Article>){
 
         launch {
-            val dao=NewsDatabase(getApplication()).newsDao()
+            val dao= NewsDatabase(getApplication()).newsDao()
             dao.deleteAllNews()
             val listLong=dao.insertAll(*list.toTypedArray())
             var i=0
