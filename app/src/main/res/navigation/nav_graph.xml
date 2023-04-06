@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/messageFragment">
+    app:startDestination="@id/discoveryFragment">
 
     <fragment
         android:id="@+id/discoveryFragment"
@@ -13,6 +13,12 @@
         <argument
             android:name="image"
             app:argType="reference" />
+        <action
+            android:id="@+id/action_discoveryFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_discoveryFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
