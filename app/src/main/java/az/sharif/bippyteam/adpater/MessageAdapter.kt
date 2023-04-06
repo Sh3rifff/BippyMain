@@ -5,15 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.model.Message
 import az.sharif.bippyteam.util.downloadFromUrl
 import az.sharif.bippyteam.util.placeHolderProgressBar
-import az.sharif.bippyteam.view.fragment.NewsFragmentDirections
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
+import az.sharif.bippyteam.view.fragment.MessageFragmentDirections
 
 
 class MessageAdapter(var messageList: List<Message>): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
@@ -38,8 +37,9 @@ class MessageAdapter(var messageList: List<Message>): RecyclerView.Adapter<Messa
         )
 
         holder.view.setOnClickListener{
-            /*val action= MessageFragmentDirections.actionNewsFragmentToDetailsFragment()
-            Navigation.findNavController(it).navigate(action)*/
+        val action=MessageFragmentDirections.ac
+            Navigation.findNavController(it).navigate(action)
+
         }
     }
 
