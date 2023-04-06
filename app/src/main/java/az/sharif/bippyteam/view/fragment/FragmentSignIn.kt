@@ -36,7 +36,7 @@ class FragmentSignIn:Fragment() {
 
         binding.createAccount.setOnClickListener{ findNavController().navigate(R.id.action_signInFragment_to_signUpFragment) }
 
-        binding.Debug.setOnClickListener{ userViewModel.getAllUsersFromLocal() }
+       // binding.Debug.setOnClickListener{ userViewModel.getAllUsersFromLocal() }
 
         val email = binding.inputEmail
         val password  = binding.inputPassword
