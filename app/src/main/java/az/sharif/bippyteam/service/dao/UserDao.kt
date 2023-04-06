@@ -1,6 +1,7 @@
 package az.sharif.bippyteam.service.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import az.sharif.bippyteam.model.MyUsers
@@ -15,4 +16,12 @@ interface UserDao {
 
     @Query("Select * from users")
     suspend fun getAllUsers():List<MyUsers>
+
+    @Query("Delete from users")
+    fun clearAll()
+
+    @Query("Select * from users")
+    suspend fun getOneUser():List<MyUsers>?
+
+
 }

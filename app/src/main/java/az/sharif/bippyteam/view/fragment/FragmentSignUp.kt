@@ -81,16 +81,19 @@ class FragmentSignUp: Fragment() {
 
             saveUser(user)
             callUserSaved()
-            ///////////////////// FireBase ///////////////////////
 
-            firebaseAuth.createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
-                Toast.makeText(requireContext(), "User added", Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
-            }.addOnFailureListener{
-                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
-            }
-        }
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
+
+            ///////////////////// FireBase ///////////////////////
+//            firebaseAuth.createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
+//                Toast.makeText(requireContext(), "User added", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(requireActivity(), MainActivity::class.java)
+//                startActivity(intent)
+//            }.addOnFailureListener{
+//                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
+//            }
+           }
         binding.textSignIn.setOnClickListener{
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }

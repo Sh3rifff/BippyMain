@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.databinding.FragmentSignInBinding
@@ -17,6 +18,7 @@ import az.sharif.bippyteam.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 
 class FragmentSignIn:Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth

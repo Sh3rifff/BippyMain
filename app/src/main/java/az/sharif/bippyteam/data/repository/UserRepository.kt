@@ -24,4 +24,12 @@ class UserRepository(context: Context) {
     suspend fun getAllUsers():List<MyUsers>{
         return userDao.getAllUsers()
     }
+    suspend fun autoLogin():List<MyUsers>?{
+        return userDao.getOneUser()
+    }
+
+    fun clearAllUser(){
+        userDao.clearAll()
+    }
+
 }

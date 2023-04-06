@@ -13,7 +13,7 @@ class UserViewModel(application: Application):BaseViewModel(application) {
     private val repos by lazy { UserRepository(application.applicationContext) }
    // lateinit var
     var identify = MutableLiveData<Boolean>()
-
+    var autoLog = MutableLiveData<Boolean>()
 
     fun getUserFromLocal(name:String, pass:String) {
         var currentuser:MyUsers?=null
@@ -37,5 +37,19 @@ class UserViewModel(application: Application):BaseViewModel(application) {
             println(list)
         }
 
+    }
+
+///////// For log out
+    fun clearAll(){
+        repos.clearAllUser()
+    }
+
+    suspend fun autoLogin(){
+        viewModelScope.launch {
+            val list = repos.autoLogin()
+            if(list!=null){
+                autoLog.value=true
+            }
+        }
     }
 }
