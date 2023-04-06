@@ -15,7 +15,11 @@ class MessageFragment: Fragment(R.layout.fragment_message) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel= ViewModelProvider(this)[MessageViewModel::class.java]
-        viewModel.user
+        var userList = viewModel.message
+
+        userList.value[0]
+
+
 
     }
 }
