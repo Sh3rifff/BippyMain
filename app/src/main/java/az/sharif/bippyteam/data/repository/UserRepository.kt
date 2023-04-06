@@ -28,7 +28,7 @@ class UserRepository(context: Context) {
         return userDao.getOneUser()
     }
 
-    fun clearAllUser(){
+    suspend fun clearAllUser(){
         userDao.clearAll()
     }
 

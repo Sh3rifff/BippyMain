@@ -18,7 +18,7 @@ interface UserDao {
     suspend fun getAllUsers():List<MyUsers>
 
     @Query("Delete from users")
-    fun clearAll()
+    suspend fun clearAll()
 
     @Query("Select * from users")
     suspend fun getOneUser():List<MyUsers>?

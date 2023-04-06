@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.databinding.FragmentSplashBinding
 import az.sharif.bippyteam.view.activity.MainActivity
 import az.sharif.bippyteam.viewmodel.UserViewModel
-import kotlinx.coroutines.launch
 
 class FragmentSplash:Fragment() {
 
@@ -30,16 +28,19 @@ class FragmentSplash:Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        lifecycleScope.launch {
+
             userViewModel.autoLogin()
-        }
+
 
 
         binding.startButton.setOnClickListener {
+            userViewModel.getAllUsersFromLocal()
             userViewModel.autoLog.observe(viewLifecycleOwner){
-                if (it){
+//                Log.d("bla", "onCreateView: $it")
+
+                if (!it){
                     val intent = Intent(requireActivity(), MainActivity::class.java)
                     startActivity(intent)
                 }
@@ -48,6 +49,10 @@ class FragmentSplash:Fragment() {
                 }
             }
 
+        }
+        binding.imageLogo.setOnClickListener {
+            userViewModel.clearAll()
+            userViewModel.autoLogin()
         }
 
         return binding.root
