@@ -1,16 +1,13 @@
 package az.sharif.bippyteam.adpater
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import az.sharif.bippyteam.R
-import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Message
 import az.sharif.bippyteam.util.downloadFromUrl
 import az.sharif.bippyteam.util.placeHolderProgressBar
@@ -19,7 +16,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
-class MessageAdapter(var messageList: ArrayList<Message>): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+class MessageAdapter(var messageList: List<Message>): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     class MessageViewHolder(var view: View): RecyclerView.ViewHolder(view){
 
@@ -40,11 +37,10 @@ class MessageAdapter(var messageList: ArrayList<Message>): RecyclerView.Adapter<
             placeHolderProgressBar(holder.view.context)
         )
 
-
-        /*holder.view.setOnClickListener{
-            val action= NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
-            Navigation.findNavController(it).navigate(action)
-        }*/
+        holder.view.setOnClickListener{
+            /*val action= MessageFragmentDirections.actionNewsFragmentToDetailsFragment()
+            Navigation.findNavController(it).navigate(action)*/
+        }
     }
 
     override fun getItemCount(): Int {
