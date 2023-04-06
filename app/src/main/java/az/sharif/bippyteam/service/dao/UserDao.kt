@@ -1,11 +1,18 @@
 package az.sharif.bippyteam.service.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
-import az.sharif.bippyteam.model.User
+import az.sharif.bippyteam.model.MyUsers
+import retrofit2.http.GET
 
 @Dao
 interface UserDao {
     @Query("Select * from users where name = :email and password = :pass")
-    fun findUserByMail(email:String,pass:String):User?
+    suspend fun validateUser(email:String,pass:String):MyUsers?
+    @Insert
+    suspend fun saveUser(myUsers: MyUsers)
+
+    @Query("Select * from users")
+    suspend fun getAllUsers():List<MyUsers>
 }

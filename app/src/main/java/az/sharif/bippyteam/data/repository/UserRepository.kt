@@ -1,11 +1,10 @@
 package az.sharif.bippyteam.data.repository
 
 import android.content.Context
-import az.sharif.bippyteam.model.User
+import az.sharif.bippyteam.model.MyUsers
 import az.sharif.bippyteam.service.api.UserApi
 import az.sharif.bippyteam.service.database.UserDatabase
 import az.sharif.bippyteam.util.UserRetrofit
-import retrofit2.Retrofit
 
 class UserRepository(context: Context) {
     private fun userCall():UserApi  =  UserRetrofit.USERINSTANCE.create(UserApi::class.java)
@@ -13,7 +12,16 @@ class UserRepository(context: Context) {
             UserDatabase.getInstance(context).userDao()
     }
 
-    suspend fun getUserCred(name:String,pass:String):User?{
+    suspend fun getUserCredR(name:String,pass:String):MyUsers?{
         return userCall().getUser(name,pass)!!
+    }
+    suspend fun saveUserToLocal(myUsers: MyUsers){
+        userDao.saveUser(myUsers)
+    }
+    suspend fun validateUser(name:String,pass:String):MyUsers?{
+        return userDao.validateUser(name,pass)
+    }
+    suspend fun getAllUsers():List<MyUsers>{
+        return userDao.getAllUsers()
     }
 }
