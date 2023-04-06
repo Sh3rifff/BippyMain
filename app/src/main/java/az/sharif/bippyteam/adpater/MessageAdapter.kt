@@ -37,10 +37,12 @@ class MessageAdapter(var messageList: List<Message>): RecyclerView.Adapter<Messa
         )
 
         holder.view.setOnClickListener{
-        val action=MessageFragmentDirections.messageToChat(messageList[position].name,messageList[position].profilImage)
-            Navigation.findNavController(it).navigate(action)
+//        val action=MessageFragmentDirections.mstoct(messageList[position].name,messageList[position].profilImage)
+//            Navigation.findNavController(it).navigate(action)
             /*val action=MessageFragmentDirections.messageToChat()
             Navigation.findNavController(it).navigate(action)*/
+            val action = MessageFragmentDirections.actionMessageToChat("qurban","qurban")
+            Navigation.findNavController(it).navigate(action)
         }
 
     }

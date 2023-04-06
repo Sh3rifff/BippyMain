@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import az.sharif.bippyteam.R
+import az.sharif.bippyteam.databinding.FragmentChatBinding
 import az.sharif.bippyteam.databinding.FragmentMessageBinding
 import az.sharif.bippyteam.util.downloadFromUrl
 import az.sharif.bippyteam.util.placeHolderProgressBar
 
 class ChatFragment: Fragment(R.layout.fragment_chat) {
 
-    private var _binding: FragmentMessageBinding? = null
+    private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
     private lateinit var userName:String
     private lateinit var userImage:String
@@ -22,7 +23,7 @@ class ChatFragment: Fragment(R.layout.fragment_chat) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMessageBinding.inflate(inflater, container, false)
+        _binding = FragmentChatBinding.inflate(layoutInflater)
         val view = binding.root
         return view
     }
