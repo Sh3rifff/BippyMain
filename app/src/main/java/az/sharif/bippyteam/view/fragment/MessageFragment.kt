@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.adpater.MessageAdapter
 import az.sharif.bippyteam.databinding.FragmentMessageBinding
+import az.sharif.bippyteam.util.downloadFromUrl
+import az.sharif.bippyteam.util.placeHolderProgressBar
 import az.sharif.bippyteam.viewmodel.MessageViewModel
 
 class MessageFragment: Fragment(R.layout.fragment_message) {
@@ -55,6 +57,13 @@ class MessageFragment: Fragment(R.layout.fragment_message) {
         binding.conversationsRecyclerView.adapter=messageAdapter
         binding.conversationsRecyclerView.visibility=View.VISIBLE
         binding.progressBar.visibility=View.GONE
+
+
+        //current user details
+        binding.textName.text="Nurlan"
+        binding.imageProfile.downloadFromUrl("https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            placeHolderProgressBar(view.context)
+        )
 
     }
 }
