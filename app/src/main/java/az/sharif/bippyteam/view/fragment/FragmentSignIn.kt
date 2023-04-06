@@ -62,10 +62,13 @@ class FragmentSignIn:Fragment() {
             }
             binding.progressBar.isVisible=true
             userViewModel.getUserFromLocal(email.text.toString(),password.text.toString())
-            if(userViewModel.identified){
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
+            userViewModel.identify.observe(viewLifecycleOwner){
+                if(it){
+                    val intent = Intent(requireActivity(), MainActivity::class.java)
+                    startActivity(intent)
+                }
             }
+
 //            firebaseAuth.signInWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
 //                Toast.makeText(requireContext(), "Successfully Entered", Toast.LENGTH_SHORT).show()
 //                binding.progressBar.isVisible=false
