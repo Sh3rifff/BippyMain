@@ -21,7 +21,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+class NewsAdapter(var articleList: ArrayList<Article>): RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     class ArticleViewHolder(var view: View): RecyclerView.ViewHolder(view){
 
@@ -36,14 +36,8 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
 
-
-
-
-
         holder.view.findViewById<TextView>(R.id.tvTitle).text=articleList[position].title
         holder.view.findViewById<TextView>(R.id.tvSource).text=articleList[position].source?.name
-
-
 
         val date=articleList[position].publishedAt
         val formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -51,9 +45,6 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
         //Toast.makeText(holder.view.context,localDate.toString(),Toast.LENGTH_LONG).show()
 
         holder.view.findViewById<TextView>(R.id.tvDate).text=localDate.toString()
-
-
-
 
         holder.view.setOnClickListener{
             val action=NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
@@ -72,6 +63,12 @@ class NewsAdapter(val articleList: ArrayList<Article>): RecyclerView.Adapter<New
     fun updateArticleList(newArticleList: List<Article>){
         articleList.clear()
         articleList.addAll(newArticleList)
+        notifyDataSetChanged()
+    }
+    fun setFilteredList(mList:ArrayList<Article>){
+        //this.articleList=mList
+        articleList.clear()
+        articleList.addAll(mList)
         notifyDataSetChanged()
     }
 }

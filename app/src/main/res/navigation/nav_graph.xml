@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/newsFragment">
+    app:startDestination="@id/discoveryFragment">
 
     <fragment
         android:id="@+id/discoveryFragment"
@@ -13,6 +13,12 @@
         <argument
             android:name="image"
             app:argType="reference" />
+        <action
+            android:id="@+id/action_discoveryFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_discoveryFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -32,4 +38,9 @@
             android:name="uuId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="az.sharif.bippyteam.view.fragment.MessageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
 </navigation>

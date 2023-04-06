@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@color/primary"
-    tools:context=".fragment.MessageFragment">
+    tools:context=".view.fragment.MessageFragment">
 
 
     <com.makeramen.roundedimageview.RoundedImageView
