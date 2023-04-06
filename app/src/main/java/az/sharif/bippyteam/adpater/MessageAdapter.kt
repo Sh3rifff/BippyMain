@@ -36,16 +36,15 @@ class MessageAdapter(var messageList: ArrayList<Message>): RecyclerView.Adapter<
 
         holder.view.findViewById<TextView>(R.id.textName).text=messageList[position].name
         holder.view.findViewById<TextView>(R.id.textEmail).text=messageList[position].lastMessage
+        holder.view.findViewById<ImageView>(R.id.imageProfile).downloadFromUrl(messageList[position].profilImage,
+            placeHolderProgressBar(holder.view.context)
+        )
 
 
         /*holder.view.setOnClickListener{
             val action= NewsFragmentDirections.actionNewsFragmentToDetailsFragment(articleList[position].uuid)
             Navigation.findNavController(it).navigate(action)
         }*/
-
-        holder.view.findViewById<ImageView>(R.id.imageProfile).downloadFromUrl(messageList[position].profilImage,
-            placeHolderProgressBar(holder.view.context)
-        )
     }
 
     override fun getItemCount(): Int {
