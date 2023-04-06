@@ -17,7 +17,7 @@ class MessageFragment: Fragment(R.layout.fragment_message) {
         viewModel= ViewModelProvider(this)[MessageViewModel::class.java]
         var userList = viewModel.message
 
-        userList.value[0]
+//        userList.value[0]
 
 
 

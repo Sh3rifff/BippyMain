@@ -19,6 +19,12 @@
         <action
             android:id="@+id/action_discoveryFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/discoveryToService"
+            app:destination="@id/servicePageFragment" />
+        <action
+            android:id="@+id/discoveryToCategory"
+            app:destination="@id/categoryPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/newsFragment"
@@ -39,8 +45,16 @@
             app:argType="integer" />
     </fragment>
     <fragment
-        android:id="@+id/messageFragment"
-        android:name="az.sharif.bippyteam.view.fragment.MessageFragment"
-        android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
+        android:id="@+id/servicePageFragment"
+        android:name="az.sharif.bippyteam.view.fragment.ServicePageFragment"
+        android:label="ServicePageFragment" >
+        <argument
+            android:name="service"
+            app:argType="az.sharif.bippyteam.model.ServiceModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryPageFragment"
+        android:name="az.sharif.bippyteam.view.fragment.CategoryPageFragment"
+        android:label="fragment_category_page"
+        tools:layout="@layout/fragment_category_page" />
 </navigation>

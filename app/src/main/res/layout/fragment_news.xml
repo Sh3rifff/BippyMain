@@ -8,44 +8,44 @@
     android:paddingTop="@dimen/_12sdp"
     tools:context=".view.fragment.NewsFragment">
 
-<!--    <GridLayout-->
+    <!--    <GridLayout-->
 
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="10dp"-->
-<!--        android:background="@drawable/background_black"-->
-<!--        android:columnCount="2"-->
-<!--        android:paddingTop="8dp"-->
-<!--        android:paddingBottom="8dp"-->
-<!--        android:rowCount="2">-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="10dp"-->
+    <!--        android:background="@drawable/background_black"-->
+    <!--        android:columnCount="2"-->
+    <!--        android:paddingTop="8dp"-->
+    <!--        android:paddingBottom="8dp"-->
+    <!--        android:rowCount="2">-->
 
-<!--        <EditText-->
-<!--            android:id="@+id/editTextQuery"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_row="0"-->
-<!--            android:layout_column="0"-->
-<!--            android:layout_columnWeight="1"-->
-<!--            android:background="@drawable/background_black"-->
-<!--            android:ems="10"-->
-<!--            android:hint="@string/search"-->
-<!--            android:inputType="textPersonName"-->
-<!--            android:padding="10dp"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textColorHint="@color/secondary_text" />-->
+    <!--        <EditText-->
+    <!--            android:id="@+id/editTextQuery"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_row="0"-->
+    <!--            android:layout_column="0"-->
+    <!--            android:layout_columnWeight="1"-->
+    <!--            android:background="@drawable/background_black"-->
+    <!--            android:ems="10"-->
+    <!--            android:hint="@string/search"-->
+    <!--            android:inputType="textPersonName"-->
+    <!--            android:padding="10dp"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textColorHint="@color/secondary_text" />-->
 
-<!--        <Button-->
-<!--            android:id="@+id/buttonSearch"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_row="0"-->
-<!--            android:layout_column="1"-->
-<!--            android:background="@drawable/background_black"-->
-<!--            android:drawableEnd="@drawable/ic_search"-->
-<!--            android:paddingEnd="20dp"-->
-<!--            tools:ignore="RtlSymmetry" />-->
+    <!--        <Button-->
+    <!--            android:id="@+id/buttonSearch"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_row="0"-->
+    <!--            android:layout_column="1"-->
+    <!--            android:background="@drawable/background_black"-->
+    <!--            android:drawableEnd="@drawable/ic_search"-->
+    <!--            android:paddingEnd="20dp"-->
+    <!--            tools:ignore="RtlSymmetry" />-->
 
-<!--    </GridLayout>-->
+    <!--    </GridLayout>-->
 
 
     <androidx.cardview.widget.CardView
@@ -53,17 +53,16 @@
         android:layout_height="wrap_content">
 
         <SearchView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/serach_view_design"
-            android:queryHint="Enter what you are looking for"
-            android:queryBackground="@android:color/transparent"
             android:iconifiedByDefault="false"
-            />
+            android:queryBackground="@android:color/transparent"
+            android:queryHint="Enter what you are looking for" />
 
     </androidx.cardview.widget.CardView>
 
@@ -83,27 +82,25 @@
                 android:layout_marginTop="5dp" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/articleError"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Error! Try again"
                 android:layout_centerInParent="true"
-                android:textSize="19sp"
+                android:text="Error! Try again"
                 android:textColor="@color/black"
+                android:textSize="19sp"
                 android:textStyle="bold"
+                android:visibility="gone"
 
                 />
 
             <ProgressBar
-                android:visibility="gone"
                 android:id="@+id/articleLoading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:visibility="gone" />
 
-
-                />
         </RelativeLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

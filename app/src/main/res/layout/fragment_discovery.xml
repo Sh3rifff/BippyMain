@@ -7,7 +7,6 @@
     android:background="#f1f1f1"
     android:padding="15dp">
 
-
     <ImageView
         android:id="@+id/locationIcon"
         android:layout_width="wrap_content"
@@ -26,6 +25,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/locationIcon"
         android:hint="@string/baku_aze"
+        android:textColorHint="@color/secondary_text"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,11 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
+        android:text="@string/find_best_services_for_you"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/currentLocation"
-        tools:text="@string/find_best_services_for_you" />
+        app:layout_constraintTop_toBottomOf="@id/currentLocation" />
 
     <LinearLayout
         android:id="@+id/search_panel"
