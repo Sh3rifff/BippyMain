@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.databinding.FragmentChatBinding
 import az.sharif.bippyteam.databinding.FragmentMessageBinding
@@ -25,6 +29,7 @@ class ChatFragment: Fragment(R.layout.fragment_chat) {
     ): View? {
         _binding = FragmentChatBinding.inflate(layoutInflater)
         val view = binding.root
+
         return view
     }
     override fun onDestroyView() {
@@ -34,6 +39,10 @@ class ChatFragment: Fragment(R.layout.fragment_chat) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imageBack.setOnClickListener(){
+            Navigation.findNavController(it).popBackStack()
+        }
+
 
         arguments?.let {
             userName=ChatFragmentArgs.fromBundle(it).name
@@ -42,6 +51,8 @@ class ChatFragment: Fragment(R.layout.fragment_chat) {
 
         binding.textName.text=userName
         binding.imageProfile.downloadFromUrl(userImage, placeHolderProgressBar(view.context))
+
+
 
 
 

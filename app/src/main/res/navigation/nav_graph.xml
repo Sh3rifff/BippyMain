@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_message_to_chat"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_messageFragment_to_usersFragment"
+            app:destination="@id/usersFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -58,5 +61,20 @@
         <argument
             android:name="image"
             app:argType="string" />
+        <action
+            android:id="@+id/action_chatFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="az.sharif.bippyteam.view.fragment.UsersFragment"
+        android:label="UsersFragment"
+        tools:layout="@layout/fragment_users">
+        <action
+            android:id="@+id/action_usersFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
 </navigation>

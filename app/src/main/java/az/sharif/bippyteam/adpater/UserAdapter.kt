@@ -12,35 +12,31 @@ import az.sharif.bippyteam.model.User
 import az.sharif.bippyteam.util.downloadFromUrl
 import az.sharif.bippyteam.util.placeHolderProgressBar
 import az.sharif.bippyteam.view.fragment.MessageFragmentDirections
+import az.sharif.bippyteam.view.fragment.UsersFragmentDirections
 
+class UserAdapter(var userList: List<User>): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-class MessageAdapter(var userList: List<User>): RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
-
-    class MessageViewHolder(var view: View): RecyclerView.ViewHolder(view){
+    class UserViewHolder(var view: View): RecyclerView.ViewHolder(view){
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val inflater= LayoutInflater.from(parent.context)
         val view=inflater.inflate(R.layout.item_container_user,parent,false)
-        return MessageViewHolder(view)
+        return UserViewHolder(view)
     }
 
 
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
 
         holder.view.findViewById<TextView>(R.id.textName).text=userList[position].name
-        holder.view.findViewById<TextView>(R.id.textEmail).text=userList[position].lastMessage
+        holder.view.findViewById<TextView>(R.id.textEmail).text=userList[position].email
         holder.view.findViewById<ImageView>(R.id.imageProfile).downloadFromUrl(userList[position].profilImage,
             placeHolderProgressBar(holder.view.context)
         )
 
         holder.view.setOnClickListener{
-//        val action=MessageFragmentDirections.mstoct(messageList[position].name,messageList[position].profilImage)
-//            Navigation.findNavController(it).navigate(action)
-            /*val action=MessageFragmentDirections.messageToChat()
-            Navigation.findNavController(it).navigate(action)*/
-            val action = MessageFragmentDirections.actionMessageToChat(userList[position].name,userList[position].profilImage)
+            val action = UsersFragmentDirections.actionUsersFragmentToChatFragment(userList[position].name,userList[position].profilImage)
             Navigation.findNavController(it).navigate(action)
         }
 

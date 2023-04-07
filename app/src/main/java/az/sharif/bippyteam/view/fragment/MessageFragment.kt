@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import az.sharif.bippyteam.R
 import az.sharif.bippyteam.adpater.MessageAdapter
@@ -59,11 +60,15 @@ class MessageFragment: Fragment(R.layout.fragment_message) {
         binding.progressBar.visibility=View.GONE
 
 
+        binding.fabNewChat.setOnClickListener(){
+            val action=MessageFragmentDirections.actionMessageFragmentToUsersFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         //current user details
         binding.textName.text="Nurlan"
         binding.imageProfile.downloadFromUrl("https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
             placeHolderProgressBar(view.context)
         )
-
     }
 }
