@@ -1,16 +1,23 @@
 package az.sharif.bippyteam.view.fragment
 
+import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,6 +27,7 @@ import az.sharif.bippyteam.R
 import az.sharif.bippyteam.databinding.FragmentSignUpBinding
 import az.sharif.bippyteam.model.MyUsers
 import az.sharif.bippyteam.view.activity.MainActivity
+import az.sharif.bippyteam.viewmodel.SignUpViewModel
 import az.sharif.bippyteam.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -29,109 +37,49 @@ import java.util.regex.Pattern
 
 
 class FragmentSignUp: Fragment() {
+    /////////////Declaration////////////////////
     private val viewModel: UserViewModel by viewModels()
+    private val signUpViewModel:SignUpViewModel by viewModels()
     private lateinit var binding :FragmentSignUpBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private var photo : Uri?=null
     private var bitmap: Bitmap?=null
-
+    private lateinit var imagePicker: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseAuth = Firebase.auth
+        imagePicker = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            photo = it.data?.data
+            bitmap=signUpViewModel.pickerInside(photo,requireActivity(),binding)
+        }
     }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(layoutInflater)
-        val name = binding.inputName
-        val email = binding.inputEmail
-        val password = binding.inputPassword
-        val confirmPassword = binding.inputConfirmPassword
-
-
-
+        binding.imageProfile.setOnClickListener{
+            signUpViewModel.pickPhoto(requireContext(),requireActivity(),imagePicker)
+        }
         /////////// AUTHENTICATION ///////////
-
         binding.buttonSignUp.setOnClickListener{
-
-            if(name.text.isEmpty()){
-                name.error = "Name cannot be empty!"
-                name.requestFocus()
-                return@setOnClickListener
-            }
-            if(!nameValidate(name.text.toString())){
-                name.error = "Masin nomresi Yaz QAQA!: 00AA000"
-                name.requestFocus()
-                return@setOnClickListener
-            }
-            if(email.text.isEmpty()){
-                email.requestFocus()
-                email.error = "Email cannot be empty"
-                return@setOnClickListener
-
-            }
-            if(password.text.isEmpty()|| password.text.length<5){
-                password.requestFocus()
-                password.error = "Password must contain at least 6 character"
-                return@setOnClickListener
-
-            }
-            if(confirmPassword.text.isEmpty() || confirmPassword.text.toString()!=password.text.toString()){
-                confirmPassword.requestFocus()
-                confirmPassword.error = "Did you already forget your password?"
-                return@setOnClickListener
-
-            }
-            val user= MyUsers(0,email.text.toString(), password.text.toString())
-
-            saveUser(user)
-            callUserSaved()
-
-            val intent = Intent(requireActivity(), MainActivity::class.java)
-            startActivity(intent)
-
-            ///////////////////// FireBase ///////////////////////
-//            firebaseAuth.createUserWithEmailAndPassword(email.text.toString(),password.text.toString()).addOnSuccessListener {
-//                Toast.makeText(requireContext(), "User added", Toast.LENGTH_SHORT).show()
-//                val intent = Intent(requireActivity(), MainActivity::class.java)
-//                startActivity(intent)
-//            }.addOnFailureListener{
-//                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_SHORT).show()
-//            }
+            signUpViewModel.signUpChecker(binding.inputName,binding.inputEmail,binding.inputPassword,binding.inputConfirmPassword)
+            debug(binding.inputEmail,binding.inputPassword)
            }
         binding.textSignIn.setOnClickListener{
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
-
         return binding.root
     }
 
-    private fun callUserSaved() {
-        println( viewModel.getAllUsersFromLocal())
+    private fun debug(email: EditText, password: EditText) {
+        val user= MyUsers(0,email.text.toString(), password.text.toString())
+        saveUser(user)
+        callUserSaved()
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
     }
-
-    private fun saveUser(myUsers: MyUsers) {
-        viewModel.saveUser(myUsers)
-    }
-
-    private fun nameValidate(name:String):Boolean{
-        val p = Pattern.compile("\\d{2}[A-Z][A-Z]\\d\\d\\d")
-        val m = p.matcher(name)
-        return m.matches()
-    }
-
-
-    private fun pickPhoto(){
-        if(ContextCompat.checkSelfPermission(requireContext(),android.Manifest.permission.READ_EXTERNAL_STORAGE)
-        != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(requireActivity(),arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),1)
-        }
-        else{
-            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            startActivityForResult(galleryIntent,2)
-        }
-    }
-
+    private fun callUserSaved() { println( viewModel.getAllUsersFromLocal()) }
+    private fun saveUser(myUsers: MyUsers) { viewModel.saveUser(myUsers) }
 }
