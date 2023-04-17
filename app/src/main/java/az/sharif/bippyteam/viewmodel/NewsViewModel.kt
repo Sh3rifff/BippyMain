@@ -2,6 +2,8 @@ package az.sharif.bippyteam.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import az.sharif.bippyteam.data.repository.NewsRepository
 import az.sharif.bippyteam.model.Article
 import az.sharif.bippyteam.model.Headline
 import az.sharif.bippyteam.service.api.NewsApi
@@ -16,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class NewsViewModel(application: Application):  BaseViewModel(application){
 
-    private val articleApiService: NewsApi = NewsRetrofitInstance.NEWSINSTANCE.create(NewsApi::class.java)
+    private val newsRepository = NewsRepository()
     private val disposable= CompositeDisposable()
     private var customPreferences= CustomSharedPreferences(getApplication())
     private var refreshTime=10*60*1000*1000*1000L
@@ -55,31 +57,9 @@ class NewsViewModel(application: Application):  BaseViewModel(application){
 
     private fun getDataFromApi(){
         articleLoading.value=true
-
-        disposable.add(
-            articleApiService.getArticles()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<Headline>(){
-                    override fun onSuccess(t: Headline) {
-                        /*articles.value=t.articles
-                        articleError.value=false
-                        articleLoading.value=false*/
-
-                        storeInSQLite(t.articles)
-                        //Toast.makeText(getApplication(),"Countries From API",Toast.LENGTH_LONG).show()
-                    }
-
-                    override fun onError(e: Throwable) {
-                        articleError.value=true
-                        articleLoading.value=false
-                        e.printStackTrace()
-
-                    }
-
-
-                })
-        )
+        viewModelScope.launch {
+            storeInSQLite(newsRepository.getNewsResponse())
+        }
     }
 
 

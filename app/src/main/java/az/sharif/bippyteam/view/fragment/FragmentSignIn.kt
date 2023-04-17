@@ -41,7 +41,11 @@ class FragmentSignIn:Fragment() {
         val email = binding.inputEmail
         val password  = binding.inputPassword
 
-        binding.buttonSignIn.setOnClickListener{ buttonPressedAction(email, password) }
+        binding.buttonSignIn.setOnClickListener{
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
+
+            buttonPressedAction(email, password) }
 
         return binding.root
 
